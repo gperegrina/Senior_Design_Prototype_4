@@ -31,6 +31,7 @@ public:
 	bool faceDown = true;
 
 	//Miguel
+	int maxHealth = 5;
 	//Player Health+Ammo+Tower
 	int health = 5;
 	int ammo = 3;

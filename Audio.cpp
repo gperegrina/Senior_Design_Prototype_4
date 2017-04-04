@@ -13,6 +13,17 @@ Audio::Audio()
 		std::cout << "sound loaded" << std::endl;
 	mainSound.setBuffer(mainsoundBuf);
 	*/
+	//Gerardo 4/3
+	//Gun Shot Sound
+	if (!gunSoundBuffer.loadFromFile("gunshot.wav"))
+		std::cout << "Unable to load gunshot" << std::endl;
+	gunSound.setBuffer(gunSoundBuffer);
+	gunSound.setVolume(100);
+
+	if (!gunEmptySoundBuffer.loadFromFile("gunEmpty.wav"))
+		std::cout << "Unable to load gun empty" << std::endl;
+	gunEmptySound.setBuffer(gunEmptySoundBuffer);
+	gunEmptySound.setVolume(100);
 
 	//Loading in sound for Background Music
 	if (!backgroundmusic1.openFromFile("Punks.wav"))

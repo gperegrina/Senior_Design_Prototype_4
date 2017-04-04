@@ -15,6 +15,13 @@ class Audio
 	sf::Sound attackSound;
 	sf::SoundBuffer attackSoundBuf;
 
+	//Gerardo 4/3 Gun Sound Empty Gun Sound
+	sf::Sound gunSound;
+	sf::SoundBuffer gunSoundBuffer;
+
+	sf::Sound gunEmptySound;
+	sf::SoundBuffer gunEmptySoundBuffer;
+
 	sf::Music backgroundmusic1;
 
 
