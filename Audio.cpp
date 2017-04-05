@@ -25,6 +25,11 @@ Audio::Audio()
 	gunEmptySound.setBuffer(gunEmptySoundBuffer);
 	gunEmptySound.setVolume(100);
 
+	if (!gunPickupBuffer.loadFromFile("gunload.wav"))
+		std::cout << "Unable to load gun pickup" << std::endl;
+	gunPickupSound.setBuffer(gunPickupBuffer);
+	gunPickupSound.setVolume(80);
+
 	//Loading in sound for Background Music
 	if (!backgroundmusic1.openFromFile("Punks.wav"))
 		std::cout << "Unable to load Music" << std::endl;

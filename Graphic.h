@@ -24,6 +24,12 @@ public:
 	//North background image
 	sf::RectangleShape background5;
 	sf::Texture backgroundImage5;
+	//Southwest background
+	sf::RectangleShape background6;
+	sf::Texture backgroundImage6;
+	//Southeast background
+	sf::RectangleShape background7;
+	sf::Texture backgroundImage7;
 
 	sf::RectangleShape backgroundTree;
 	sf::Texture treeTexture;

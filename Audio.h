@@ -22,6 +22,9 @@ class Audio
 	sf::Sound gunEmptySound;
 	sf::SoundBuffer gunEmptySoundBuffer;
 
+	sf::Sound gunPickupSound;
+	sf::SoundBuffer gunPickupBuffer;
+
 	sf::Music backgroundmusic1;
 
 

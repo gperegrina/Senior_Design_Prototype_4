@@ -35,12 +35,15 @@ int main() {
 	sf::Texture playerTexture;
 	playerTexture.loadFromFile("char_sprite_walk3.png");
 
+	/*
 	sf::RectangleShape playerRect;
 	sf::Texture playerTexture2;
 	playerTexture2.loadFromFile("player.png");
+
 	playerRect.setSize(sf::Vector2f(40.0f, 40.0f));
 	playerRect.setPosition(220.0f, 220.0f);
 	playerRect.setTexture(&playerTexture2);
+	*/
 	sf::RectangleShape tower1;
 	sf::RectangleShape tower2;
 	sf::RectangleShape tower3;
@@ -115,8 +118,9 @@ int main() {
 	class Wall wall0, wall1, wall2, wall3, wall4;
 
 	sf::Texture textureWall;
-	textureWall.loadFromFile("wall.jpg");
+	textureWall.loadFromFile("cave_block.png");
 	wall0.rect.setTexture(&textureWall);
+
 	//East Walls
 	///Top+Bottom+Right
 	for (int i = 720; i <= 1370; i += 50)
@@ -242,6 +246,8 @@ int main() {
 	wall1.rect.setPosition(560, 240);
 	wall1.rect.setSize(sf::Vector2f(30, 10));
 	wallArray.push_back(wall1);
+
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/*
 	
@@ -299,7 +305,7 @@ int main() {
 	resource1.resource1 = true;
 	resource1.resource2 = false;
 	resource1.resource3 = false;
-	textureResource1.loadFromFile("res1.png");
+	textureResource1.loadFromFile("res_health.png");
 	resource1.rect.setTexture(&textureResource1);
 	//resource1.rect.setFillColor(sf::Color::Green);
 	resource1.rect.setPosition(300, 350);
@@ -311,7 +317,7 @@ int main() {
 	resource1.resource1 = false;
 	resource1.resource2 = true;
 	resource1.resource3 = false;
-	textureResource2.loadFromFile("res2.png");
+	textureResource2.loadFromFile("res_bullet.png");
 	resource1.rect.setTexture(&textureResource2);
 	//resource1.rect.setFillColor(sf::Color::Blue);
 	resource1.rect.setPosition(450, 250);
@@ -323,7 +329,7 @@ int main() {
 	resource1.resource1 = false;
 	resource1.resource2 = false;
 	resource1.resource3 = true;
-	textureResource3.loadFromFile("res3.png");
+	textureResource3.loadFromFile("res_gun.png");
 	resource1.rect.setTexture(&textureResource3);
 	//resource1.rect.setFillColor(sf::Color::Red);
 	resource1.rect.setPosition(200, 250);
@@ -436,32 +442,38 @@ int main() {
 					//Gerardo 4/3 Moved Cuongs Code ---------------------------------------------------------------------
 					//Added Gun Sound, and Empty Gun Sound
 					if (evnt.key.code == sf::Keyboard::Space) {
+						if (player.gun == 1) {
+							if (player.ammo > 0) {
+								audio.gunSound.play();
+								std::cout << "playing gunshot " << std::endl;
 
-						if (player.ammo > 0) {
-							audio.gunSound.play();
-							std::cout << "playing gunshot " << std::endl;
+								if (player.ammo == 0)
+									player.ammo = 0;
+								else
+									player.ammo -= 1;
+								std::cout << "ammo left: " << player.ammo << std::endl;
 
-							if (player.ammo == 0)
-								player.ammo = 0;
-							else
-								player.ammo -= 1;
-							std::cout << "ammo left: " << player.ammo << std::endl;
-
-							if (elapsed1.asSeconds() >= 0.1)
-							{
-								clock1.restart();
-								projectile1.rect.setPosition(player.body.getPosition().x + player.body.getSize().x / 2 - projectile1.rect.getSize().x / 2, player.body.getPosition().y + player.body.getSize().y / 2 - projectile1.rect.getSize().y / 2);
-								projectile1.direction = player.direction;
-								projectileArray.push_back(projectile1);
-								std::cout << "space bar hit" << std::endl;
+								if (elapsed1.asSeconds() >= 0.1)
+								{
+									clock1.restart();
+									projectile1.rect.setPosition(player.body.getPosition().x + player.body.getSize().x / 2 - projectile1.rect.getSize().x / 2, player.body.getPosition().y + player.body.getSize().y / 2 - projectile1.rect.getSize().y / 2);
+									projectile1.direction = player.direction;
+									projectileArray.push_back(projectile1);
+									std::cout << "space bar hit" << std::endl;
+								}
+							}
+							else {
+								audio.gunEmptySound.play();
 							}
 						}
 						else {
-							audio.gunEmptySound.play();
+							std::cout << "!no gun equipped!" << std::endl;
 						}
 						//-----------------------------------------------------------------------------------------------------
-
-
+					}
+					//Gerardo 4/4 Moved code
+					if (evnt.key.code == sf::Keyboard::H) {
+						help ^= 1;
 					}
 				}
 				//---------------------------------------------------------------------------------------------------------------
@@ -517,19 +529,22 @@ int main() {
 				//---------------------------------------------------------------------------------------------------------------
 			}
 		//} 
-		
+/*
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::H))
 		{
 			help ^= 1;
 		}
-		
+*/	
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Num1))
 		{
 			flag = 0;
 		}
+//Gerardo 4/4 added flag for gun resource
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Num2))
 		{
-			flag = 1;
+			if (player.gun == 1) {
+				flag = 1;
+			}
 		}
 		if (flag == 0)
 		{
@@ -691,8 +706,9 @@ int main() {
 				}
 				if (resourceArray[counter].resource3 == true) //resource 3
 				{
-					player.tower += 1;
-					cout << "tower: " << player.tower << endl;
+					audio.gunPickupSound.play();
+					player.gun = 1;
+					cout << "gun: " << player.gun << endl;
 					resourceArray[counter].gathered = true;
 				}
 			}
@@ -720,7 +736,10 @@ int main() {
 		window.draw(graphics.background2);
 		window.draw(graphics.background3);
 		window.draw(graphics.background4);
-		window.draw(graphics.background5);
+		//window.draw(graphics.background5);
+		window.draw(graphics.background6);
+		window.draw(graphics.background7);
+
 
 		//Draw Wall
 		counter = 0;
@@ -780,8 +799,13 @@ int main() {
 
 					int tempRand = generateRandom(3);
 //Added 04/01
-					if (tempRand == 2) // Enemy Chases Player
+					if (tempRand == 1) // Enemy Chases Player
 					{
+						projectile1.attackDamage = enemyArray[counter].attackDamage;
+						
+					}
+					 if (tempRand == 2)
+					 {
 						if (player.body.getPosition().y < enemyArray[counter].rect.getPosition().y)
 						{
 							enemyArray[counter].direction = 1;

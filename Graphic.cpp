@@ -4,17 +4,17 @@
 
 Graphic::Graphic()
 {
-
+	//Changed cave image 4/4
 	//Main Background
 	background.setSize(sf::Vector2f(720.0f, 480.0f));
 	background.setPosition(0.0f, 0.0f);
-	backgroundImage.loadFromFile("cave.png");
+	backgroundImage.loadFromFile("cave3.png");
 	background.setTexture(&backgroundImage);
 
 	//East Background
 	background2.setSize(sf::Vector2f(720.0f, 480.0f));
 	background2.setPosition(720.0f, 0.0f);
-	backgroundImage2.loadFromFile("mario.png");
+	backgroundImage2.loadFromFile("cave_side.png");
 	background2.setTexture(&backgroundImage2);
 	
 	//South Background
@@ -23,18 +23,35 @@ Graphic::Graphic()
 	backgroundImage3.loadFromFile("cave.png");
 	background3.setTexture(&backgroundImage3);
 
+	//Gerardo 4/4
+	//Player starts at west
 	//West Background
 	background4.setSize(sf::Vector2f(720.0f, 480.0f));
 	background4.setPosition(-720.0f, 0.0f);
-	backgroundImage4.loadFromFile("mario.png");
+	backgroundImage4.loadFromFile("cave_side.png");
 	background4.setTexture(&backgroundImage4);
 
+	//Gerardo 4/4
+	//South west background
+	background6.setSize(sf::Vector2f(720.0f, 480.0f));
+	background6.setPosition(-720.0f, 480.0f);
+	backgroundImage6.loadFromFile("cave_side.png");
+	background6.setTexture(&backgroundImage6);
+
+	//South East background 4/4
+	background7.setSize(sf::Vector2f(720.0f, 480.0f));
+	background7.setPosition(720.0f, 480.0f);
+	backgroundImage7.loadFromFile("cave_side.png");
+	background7.setTexture(&backgroundImage7);
+
+
+/*Gerardo North removed 4/4
 	//North Background
 	background5.setSize(sf::Vector2f(720.0f, 480.0f));
 	background5.setPosition(0.0f, -480.0f);
-	backgroundImage5.loadFromFile("mario.png");
+	backgroundImage5.loadFromFile("cave_side.png");
 	background5.setTexture(&backgroundImage5);
-
+*/
 	//Transparent Tree
 	backgroundTree.setSize(sf::Vector2f(150.0f, 150.0f));
 	backgroundTree.setPosition(500.0f, 100.0f);

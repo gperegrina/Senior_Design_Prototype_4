@@ -33,9 +33,10 @@ public:
 	//Miguel
 	int maxHealth = 5;
 	//Player Health+Ammo+Tower
-	int health = 5;
+	int health = 3;
 	int ammo = 3;
 	int tower = 3;
+	int gun = 0;
 
 
 private:

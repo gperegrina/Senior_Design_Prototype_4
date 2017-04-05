@@ -8,7 +8,7 @@ class enemy
 {
 public:
 	//float movementSpeed = 0.5; //slower
-	int movementSpeed = 1;
+	int movementSpeed = 5;
 	int movementLength = 100; //50 move shorter
 	int attackDamage = 2;
 	int counterWalking = 0;
