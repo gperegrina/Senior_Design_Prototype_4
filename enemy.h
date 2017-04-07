@@ -16,7 +16,7 @@ public:
 	int counter = 0;
 
 	//----------------------------- Add on 03/23 for projectile
-	int hp = 15;
+	int hp = 3; // 3 health, could be changed later
 	bool alive = true;
 	
 	// Add for collision with wall
