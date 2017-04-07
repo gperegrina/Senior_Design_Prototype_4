@@ -785,6 +785,52 @@ int main() {
 		//sf::Time elapsed1 = clock1.getElapsedTime();
 		sf::Time elapsed2 = clock2.getElapsedTime();
 		sf::Time elapsed3 = clock3.getElapsedTime();
+		
+	/*
+	//-------------------------------------------------------------------- added by Cuong 04/06
+	// Enemy collides with Player (Player takes damage)
+		if (elapsed2.asSeconds() >= 0.5)
+		{
+			clock2.restart();
+			
+			counter = 0;
+			for (iter4 = enemyArray.begin(); iter4 != enemyArray.end(); iter4++)
+			{
+				if (player.body.getGlobalBounds().intersects(enemyArray[counter].rect.getGlobalBounds()))
+				{
+					player.health -= enemyArray[counter].attackDamage;
+
+					cout << "player health: " << player.health << endl;
+				}
+				counter++;
+			}
+		}
+		
+
+		// Enemy2 collides with Player (Player takes damage)
+		if (elapsed2.asSeconds() >= 0.5)
+		{
+			clock2.restart();
+
+			counter = 0;
+			for (iter4 = enemy1Array.begin(); iter4 != enemy1Array.end(); iter4++)
+			{
+				if (player.body.getGlobalBounds().intersects(enemy1Array[counter].rect.getGlobalBounds()))
+				
+				{
+					player.health -= enemy1Array[counter].attackDamage;
+
+					cout << "player health: " << player.health << endl;
+				}
+				counter++;
+
+			}
+			
+		}
+		*/
+	//end
+	//------------------------------------------------------------------------------------------------------------------------------------
+		
 
 		// Enemy Chasing (AI)
 		counter = 0;
@@ -924,11 +970,14 @@ int main() {
 			{
 				if (projectileArray[counter].rect.getGlobalBounds().intersects(enemyArray[counter2].rect.getGlobalBounds()))
 				{
-					cout << "bullet collision with enemy" << endl;
+					//cout << "bullet collision with enemy" << endl;
 
 					projectileArray[counter].destroy = true;
 
 					enemyArray[counter2].hp -= projectileArray[counter].attackDamage;
+					
+					cout << "enemy health:  " << enemyArray[counter2].hp << endl; // added by cuong 04/06
+					
 					if (enemyArray[counter2].hp <= 0)
 					{
 						enemyArray[counter2].alive = false;
@@ -985,11 +1034,14 @@ int main() {
 			{
 				if (projectileArray[counter].rect.getGlobalBounds().intersects(enemy1Array[counter2].rect.getGlobalBounds()))
 				{
-					cout << "bullet collision with enemy" << endl;
+					//cout << "bullet collision with enemy" << endl;
 
 					projectileArray[counter].destroy = true;
 
 					enemy1Array[counter2].hp -= projectileArray[counter].attackDamage;
+					
+					cout << "enemy health:  " << enemyArray[counter2].hp << endl; // added by Cuong 04/06
+					
 					if (enemy1Array[counter2].hp <= 0)
 					{
 						enemy1Array[counter2].alive = false;
