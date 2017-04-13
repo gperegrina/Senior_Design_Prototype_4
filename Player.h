@@ -31,14 +31,16 @@ public:
 	bool faceDown = true;
 
 	//Miguel
-	int maxHealth = 5;
+	double maxHealth = 5;
 	//Player Health+Ammo+Tower
-	int health = 3;
+	double health = 3;
+	int dead = 0;
 	int ammo = 3;
 	int tower = 3;
 	int gun = 0;
-
-
+	//Coordinates
+	bool N = false, E = false, C = false, S = false, W = false, SW = false, SE = false;
+	int here = 0;
 private:
 	//sf::RectangleShape body;
 	//Animation animation;

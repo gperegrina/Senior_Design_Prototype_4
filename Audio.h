@@ -4,14 +4,14 @@
 
 class Audio
 {
-	public:
+public:
 	Audio();
 	~Audio();
 
 	//Sound settings
 	sf::SoundBuffer mainsoundBuf;
 	sf::Sound mainSound;
-	
+
 	sf::Sound attackSound;
 	sf::SoundBuffer attackSoundBuf;
 

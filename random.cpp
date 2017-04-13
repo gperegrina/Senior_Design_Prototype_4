@@ -8,7 +8,7 @@ int generateRandom(int max)
 	return myRandom;
 }
 
-int generateRandom0(int max )
+int generateRandom0(int max)
 {
 	int randomNumber = rand();
 	float random = (randomNumber % max);

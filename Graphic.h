@@ -38,6 +38,7 @@ public:
 	//						4/2/17
 	//ExitTop image
 	sf::RectangleShape backgroundExitTop;
+	sf::RectangleShape backgroundExitTop2;
 	sf::Texture exittopTexture;
 	//ExitBottom image
 	sf::RectangleShape backgroundExitBottom;

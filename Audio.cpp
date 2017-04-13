@@ -8,9 +8,9 @@ Audio::Audio()
 	/*
 	std::cout << "loading in background music" << std::endl;
 	if (!mainsoundBuf.loadFromFile("Punks.wav"))
-		std::cout << "can't open sound file" << std::endl;
+	std::cout << "can't open sound file" << std::endl;
 	else
-		std::cout << "sound loaded" << std::endl;
+	std::cout << "sound loaded" << std::endl;
 	mainSound.setBuffer(mainsoundBuf);
 	*/
 	//Gerardo 4/3
